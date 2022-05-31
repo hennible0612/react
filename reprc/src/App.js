@@ -5,41 +5,47 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-    //로컬 state 이 컴포넌트만 사용가능
-    constructor() { //when ever its built // 다른 생성자들이랑 똑같다
+    constructor() {
         super();
         this.state = {
-            name: {lastName: "SW", firstName: "Hong"},
-
-            company: "Baek Sue"
+            monsters: [
+                {
+                    name: 'linda',
+                },
+                {
+                    name: 'Frank',
+                },
+                {
+                    name: 'Jacky',
+                }
+            ]
         };
 
     }
-    // name: {firstName: "Sam", lastName: "Park"
+
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => response.json())
+            .then((users) => this.setState(
+                () => {
+                    return {monsters: users}
+                },
+                () => {
+                    console.log(this.state)
+                }
+            ));
+    }
+
 
     render() {
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Hi I'm {this.state.name.firstName} {this.state.name.lastName}, I am {this.state.company}
-                    </p>
+        return <div className='App'>
+            {
+                this.state.monsters.map((monster) => {
+                    return <h1>{monster.name}</h1>
+                })
+            }
 
-                    <button
-                        onClick={()=>{
-                            this.setState((state, props)=>{
-                                return {
-                                    name: {firstName: "Sam", lastName: "Park"}
-                                }
-                            }, ()=>{ console.log(this.state)});
-                        }}
-                    >
-                        Change Name
-                    </button>
-                </header>
-            </div>
-        );
+        </div>;
     }
 }
 

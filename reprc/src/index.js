@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render( //root 에 랜더링을 해라
   <React.StrictMode>
-    <App />  // 전체 리액트앱
+    <App />
   </React.StrictMode>
 );
 
