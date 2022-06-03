@@ -32,28 +32,36 @@ class App extends Component {
             );
     }
 
+    // 검색 필터 매서드
+    onSearchChange = (event) => {
+
+        const searchField = event.target.value.toLocaleLowerCase();
+
+        this.setState(() => {
+            return {searchField: searchField}
+        });
+    }
 
     render() {
         console.log("render")
+        const {monsters, searchField} = this.state;
+        const {onSearchChange} = this
 
-        const filteredMonsters = this.state.monsters.filter((monster) => { //검색된 array
-            return monster.name.toLocaleLowerCase().includes(this.state.searchField); //있을시 true 그리고 array에 저장장                    })
+        const filteredMonsters = monsters.filter((monster) => { //검색된 array
+            return monster.name.toLocaleLowerCase().includes(searchField); //있을시 true 그리고 array에 저장장                    })
         });
         console.log(filteredMonsters)
         return (<div className='App'>
             <input className='search-box' type='search' placeholder='search monsters'
-                   onChange={(event) => {
-
-                       const searchField = event.target.value.toLocaleLowerCase();
-
-                       this.setState(() => {
-                           return {searchField : searchField}
-                       });
-                   }}
+                   onChange={onSearchChange}
             />
             {
                 filteredMonsters.map((monster) => { //검색된 array 만 랜더링
-                    return <h1>{monster.name}</h1>
+                    return (
+                        <div key={monster.id}>
+                            <h1>{monster.name}</h1>
+                        </div>
+                    );
                 })
             }
         </div>);
