@@ -4,6 +4,10 @@ import {Component} from "react"; //클래스
 import logo from './logo.svg';
 import './App.css';
 
+import './components/card-list/card-list.component'
+import CardList from "./components/card-list/card-list.component";
+import CardListComponent from "./components/card-list/card-list.component";
+
 class App extends Component {
 
     constructor() {
@@ -55,14 +59,15 @@ class App extends Component {
             <input className='search-box' type='search' placeholder='search monsters'
                    onChange={onSearchChange}
             />
+            <CardList monsters={filteredMonsters}/>
             {
-                filteredMonsters.map((monster) => { //검색된 array 만 랜더링
-                    return (
-                        <div key={monster.id}>
-                            <h1>{monster.name}</h1>
-                        </div>
-                    );
-                })
+                // filteredMonsters.map((monster) => { //검색된 array 만 랜더링
+                //     return (
+                //         <div key={monster.id}>
+                //             <h1>{monster.name}</h1>
+                //         </div>
+                //     );
+                // })
             }
         </div>);
     }
