@@ -6,7 +6,8 @@ import './App.css';
 
 import './components/card-list/card-list.component'
 import CardList from "./components/card-list/card-list.component";
-import CardListComponent from "./components/card-list/card-list.component";
+import SearchBox from "./components/search-box/search-box.component";
+// import CardListComponent from "./components/card-list/card-list.component";
 
 class App extends Component {
 
@@ -56,11 +57,9 @@ class App extends Component {
         });
         console.log(filteredMonsters)
         return (<div className='App'>
-            <input className='search-box' type='search' placeholder='search monsters'
-                   onChange={onSearchChange}
-            />
-            <CardList monsters={filteredMonsters}/>
+            <SearchBox className={"search-box"} onChangeHandler={onSearchChange} placeholder={'search Monsters'}/>
 
+            <CardList monsters={filteredMonsters}/>
         </div>);
     }
 }
