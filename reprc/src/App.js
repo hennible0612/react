@@ -60,15 +60,7 @@ class App extends Component {
                    onChange={onSearchChange}
             />
             <CardList monsters={filteredMonsters}/>
-            {
-                // filteredMonsters.map((monster) => { //검색된 array 만 랜더링
-                //     return (
-                //         <div key={monster.id}>
-                //             <h1>{monster.name}</h1>
-                //         </div>
-                //     );
-                // })
-            }
+
         </div>);
     }
 }
