@@ -24,7 +24,7 @@ const App = () => {
     }, [])
 
     console.log('render');
-    useEffect(() => {
+    useEffect(() => { //monsters 혹은 searchField 가 바뀔때만 실행
         const newfilteredMonsters = monsters.filter((monster) => {
             return monster.name.toLocaleLowerCase().includes(searchField)
         });
